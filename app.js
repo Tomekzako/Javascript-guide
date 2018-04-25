@@ -208,4 +208,49 @@ function asyncAwait() {
     getRecipeAW().then(rec => console.log(`${rec} is the best ever!`));
 
 };
-asyncAwait();
+//asyncAwait();
+
+
+
+
+
+//////////////////////////////////////////////////////////
+/*--------------------> AJAX & APIs<--------------------*/
+//////////////////////////////////////////////////////////
+/*
+    Asynchronous JavaScript And XML:
+    
+    Pozwala asynchronicznie komunikować się z zdalnymi serwerami. Pobrać dane bez konieczności przeładowania całej strony
+    
+    Application Programming Interface:
+    
+    Interfejs oprogramowania, ściśle określony zestaw reguł i ich opisów, w jaki programy komputerowe komunikują się między sobą. Umożliwia komunikację między różnymi aplikacjami.
+    Są dwa typy API's, które można użyc w JS:
+    - własny API (dane z własnego serwera)
+    - 3rd-party APIs (Google Maps, Embed YouTube videos, Weather data, Movies data, itp.)
+    
+*/
+
+function ajax() {
+
+    function getWeather(woeid) {
+        fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)
+            .then(result => {
+                console.log(result);
+                return result.json();
+            })
+            .then(data => {
+                console.log(data);
+                const today = data.consolidated_weather[0];
+                console.log(`Temperatures in ${data.title} stay between ${today.min_temp} and ${today.max_temp}`)
+
+            })
+            .catch(error => console.log(error));
+    };
+    getWeather(2487956);
+    getWeather(44418);
+
+
+
+};
+ajax();
