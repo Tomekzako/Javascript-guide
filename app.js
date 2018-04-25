@@ -148,4 +148,64 @@ function promises() {
 
 
 };
-promises();
+//promises();
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+/*--------------------> ASYNC/AWAIT<--------------------*/
+//////////////////////////////////////////////////////////
+
+function asyncAwait() {
+
+    const getIDs = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve([34, 654, 491, 23]);
+        }, 1500);
+    });
+
+    const getRecipe = recId => {
+        return new Promise((resolve, reject) => {
+            setTimeout(ID => {
+                const recipe = {
+                    title: 'Fresh Tomato Pasta',
+                    publisher: 'Tomek'
+                };
+                resolve(`${ID}: ${recipe.title}`);
+
+            }, 1500, recId);
+        });
+    };
+
+    const getPublisher = publisher => {
+        return new Promise((resolve, reject) => {
+            setTimeout(pub => {
+                const recipe2 = {
+                    title: 'Italian Pizza',
+                    publisher: 'Andrew'
+                };
+                resolve(`${pub}: ${recipe2.title}`);
+            }, 1500, publisher);
+        });
+    };
+
+
+
+    async function getRecipeAW() {
+        const IDs = await getIDs;
+        console.log(IDs);
+        const recipe = await getRecipe(IDs[2]);
+        console.log(recipe);
+        const publisher = await getPublisher("Tomek");
+        console.log(publisher);
+
+        return recipe;
+    };
+
+    getRecipeAW().then(rec => console.log(`${rec} is the best ever!`));
+
+};
+asyncAwait();
