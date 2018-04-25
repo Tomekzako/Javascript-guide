@@ -1,3 +1,89 @@
+//////////////////////////////////////////////////////
+/*--------------------> BASICS <--------------------*/
+//////////////////////////////////////////////////////
+
+function basics() {
+
+    const years = [1990, 2007, 1943, 1985, 1921];
+
+    //ES5
+
+    //    var array = [];
+    //
+    //    for (var i = 0; i < years.length; i++) {
+    //        array[i] = 2018 - years[i];
+    //    }
+    //
+    //    for (var i = 0; i < array.length; i++) {
+    //
+    //        if (array[i] >= 18) {
+    //            console.log("Person " + (i + 1) + " is " + array[i] + " years old, and is full of age.");
+    //        } else {
+    //            console.log("Person " + (i + 1) + " is " + array[i] + " years old, and is NOT full of age.");
+    //        }
+    //    }
+    //
+    //    function printFullAge(years) {
+    //        var array = [];
+    //        var fullAges = [];
+    //        for (var i = 0; i < years.length; i++) {
+    //            array[i] = 2018 - years[i];
+    //        }
+    //        for (var i = 0; i < array.length; i++) {
+    //
+    //            if (array[i] >= 18) {
+    //                console.log("Person " + (i + 1) + " is " + array[i] + " years old, and is full of age.");
+    //                fullAges.push(true);
+    //            } else {
+    //                console.log("Person " + (i + 1) + " is " + array[i] + " years old, and is NOT full of age.");
+    //                fullAges.push(false);
+    //            }
+    //        }
+    //        return fullAges;
+    //    }
+    //
+    //
+    //    const full_1 = printFullAge(years);
+    //    const full_2 = printFullAge(['2012', '2015', '1920']);
+    //
+    //    console.log(full_1);
+    //    console.log(full_2);
+
+    //ES6
+
+    function printFullAge(years) {
+        //        let age = [];
+        let fullAge = [];
+
+        //        for (let val of years) {
+        //            age.push(new Date().getFullYear() - val);
+        //        }
+
+        const age = years.map(el => new Date().getFullYear() - el);
+
+        age.forEach((el, index) => {
+            if (el >= 18) {
+                console.log(`Person ${index + 1} is ${el} years old, and is full of age.`);
+                fullAge.push(true);
+            } else {
+                console.log(`Person ${index + 1} is ${el} years old, and is NOT full of age.`);
+                fullAge.push(false);
+            }
+        });
+        return fullAge;
+    }
+    const full_1 = printFullAge(years);
+    const full_2 = printFullAge(['2012', '2015', '1920']);
+
+    console.log(full_1);
+    console.log(full_2);
+
+};
+basics();
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 /*--------------------> ASYNCHRONOUS JAVASCRIPT<--------------------*/
 //////////////////////////////////////////////////////////////////////
@@ -253,4 +339,4 @@ function ajax() {
 
 
 };
-ajax();
+//ajax();
