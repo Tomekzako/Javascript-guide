@@ -118,6 +118,18 @@ function promises() {
         });
     };
 
+    const getPublisher = publisher => {
+        return new Promise((resolve, reject) => {
+            setTimeout(pub => {
+                const recipe2 = {
+                    title: 'Italian Pizza',
+                    publisher: 'Andrew'
+                };
+                resolve(`${pub}: ${recipe2.title}`);
+            }, 1500, publisher);
+        });
+    };
+
     getIDs
         .then(IDs => {
             console.log(IDs);
@@ -125,6 +137,10 @@ function promises() {
         })
         .then(recipe => {
             console.log(recipe);
+            return getPublisher("Tomek");
+        })
+        .then(pub => {
+            console.log(pub);
         })
         .catch(error => {
             console.log('Error!');
