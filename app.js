@@ -78,4 +78,58 @@ function asynchronous() {
     //getRecipe();
 
 };
-asynchronous();
+//asynchronous();
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+/*--------------------> PROMISES<--------------------*/
+///////////////////////////////////////////////////////
+
+
+/*
+    Promise:
+        Obiekt, utrzymujący informacje czy dane async wydarzenie się już wydarzyło czy nie. 
+        Jeśli się wydarzyło, determinuje co powinno nastąpić później.
+        Wprowadza pojęcie przyszłej wartości, której się spodziewamy.
+*/
+
+function promises() {
+
+    const getIDs = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve([34, 654, 491, 23]);
+        }, 1500);
+    });
+
+    const getRecipe = recId => {
+        return new Promise((resolve, reject) => {
+            setTimeout(ID => {
+                const recipe = {
+                    title: 'Fresh Tomato Pasta',
+                    publisher: 'Tomek'
+                };
+                resolve(`${ID}: ${recipe.title}`);
+
+            }, 1500, recId);
+        });
+    };
+
+    getIDs
+        .then(IDs => {
+            console.log(IDs);
+            return getRecipe(IDs[2]);
+        })
+        .then(recipe => {
+            console.log(recipe);
+        })
+        .catch(error => {
+            console.log('Error!');
+        });
+
+
+};
+promises();
