@@ -79,7 +79,7 @@ function basics() {
     console.log(full_2);
 
 };
-basics();
+//basics();
 
 
 
@@ -280,8 +280,8 @@ function asyncAwait() {
 
 
 
-    async function getRecipeAW() {
-        const IDs = await getIDs;
+    async function getRecipeAW() { // --> 'async' oznacza, że funckja działa w 'tle' nie wstrzymując kodu. 
+        const IDs = await getIDs; // --> 'await' czeka, aż Promise  osiągnie i zwróci wynik. 
         console.log(IDs);
         const recipe = await getRecipe(IDs[2]);
         console.log(recipe);
@@ -292,6 +292,9 @@ function asyncAwait() {
     };
 
     getRecipeAW().then(rec => console.log(`${rec} is the best ever!`));
+
+    /* Asynchroniczne funkcje zawsze zwracają Promise. */
+
 
 };
 //asyncAwait();
@@ -333,10 +336,31 @@ function ajax() {
             })
             .catch(error => console.log(error));
     };
-    getWeather(2487956);
-    getWeather(44418);
+    //    getWeather(2487956);
+    //    getWeather(44418);
 
+    async function getWeatherAW(woeid) {
+
+        try {
+            const result = await fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`);
+            const data = await result.json();
+            const tomorrow = data.consolidated_weather[1];
+            console.log(`Temperatures in ${data.title} stay between ${tomorrow.min_temp} and ${tomorrow.max_temp}`);
+
+            return data;
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    let dataSanFr;
+    getWeatherAW(44418).then(data => {
+        dataSanFr = data;
+        console.log(dataSanFr);
+    });
+    getWeatherAW(2487956);
 
 
 };
-//ajax();
+ajax();
