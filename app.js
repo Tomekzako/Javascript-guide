@@ -163,6 +163,36 @@ function scoping() {
 
 
 
+////////////////////////////////////////////////////
+/*--------------------> THIS <--------------------*/
+////////////////////////////////////////////////////
+
+function thisKeyword() {
+
+    var john = {
+        name: 'John',
+        yearOfBirth: 1990,
+        calculateAge: function () {
+            console.log(this);
+            console.log(2018 - this.yearOfBirth);
+        }
+    }
+    john.calculateAge();
+
+    var mike = {
+        name: 'Mike',
+        yearOfBirth: 1970
+    }
+    mike.calculateAge = john.calculateAge;
+    mike.calculateAge();
+
+};
+thisKeyword();
+
+
+
+
+
 
 
 
