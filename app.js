@@ -113,6 +113,56 @@ function hoisting() {
 
 
 
+///////////////////////////////////////////////////////
+/*--------------------> SCOPING <--------------------*/
+///////////////////////////////////////////////////////
+function scoping() {
+
+    // Scoping odpowiada na pytanie "Gdzie mamy dostęp do poszczególnej zmiennej"
+    // Każda nowa funkcja tworzy scope.
+    // Lexical Scoping: funkcja, która jest wewnątrz innej funkcji ma dostęp do 'scope' funkcji zewnętrznej
+
+    var a = 'Hello!';
+    first();
+
+    function first() {
+        var b = 'Hi!';
+        second();
+
+        function second() {
+            var c = 'Hey!';
+            console.log(a + b + c);
+        }
+    }
+    // Execution stack - porządek w jakim wywoływane sa funkcje
+    // Scope Chain - porządek w jakim funckje sa zapisane leksykalnie
+
+    var a = 'Hello!';
+    first();
+
+    function first() {
+        var b = 'Hi!';
+        second();
+
+        function second() {
+            var c = 'Hey!';
+            third(); // ma dostęp do funckji z powodu lexical scoping
+        }
+    }
+
+    function third() {
+        var d = 'John';
+        console.log(c); // nie ma dostępu do zmiennej c
+    }
+
+
+};
+//scoping();
+
+
+
+
+
 
 
 
@@ -395,4 +445,4 @@ function ajax() {
 
 
 };
-ajax();
+//ajax();
