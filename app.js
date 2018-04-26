@@ -84,6 +84,38 @@ function basics() {
 
 
 
+
+////////////////////////////////////////////////////////
+/*--------------------> HOISTING <--------------------*/
+////////////////////////////////////////////////////////
+function hoisting() {
+
+    calculateAge(1993); //--> działa
+
+    function calculateAge(y) {
+        console.log(2018 - y);
+    }
+
+    //    retirement(1993); //--> błąd, ponieważ jest to wyrażenie funkcyjne
+
+    var retirement = function (y) {
+        console.log(65 - (2018 - y));
+    }
+
+    console.log(age);
+    var age = 23;
+    console.log(age);
+
+};
+//hoisting();
+
+
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 /*--------------------> ASYNCHRONOUS JAVASCRIPT<--------------------*/
 //////////////////////////////////////////////////////////////////////
