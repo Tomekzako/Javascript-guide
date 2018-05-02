@@ -187,7 +187,76 @@ function thisKeyword() {
     mike.calculateAge();
 
 };
-thisKeyword();
+//thisKeyword();
+
+
+
+
+
+////////////////////////////////////////////////////////////////////
+/*--------------------> FUNCTION CONSTRUCTOR <--------------------*/
+////////////////////////////////////////////////////////////////////
+function constructor() {
+
+    var Person = function (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    Person.prototype.calculateAge = function () {
+        console.log(2018 - this.yearOfBirth);
+    }
+
+    Person.prototype.lastName = 'Smith';
+
+    var john = new Person('John', 1973, 'Teacher');
+    var maria = new Person('Maria', 1957, 'Designer');
+
+    console.log(john);
+    john.calculateAge();
+
+    console.log(maria.lastName);
+
+};
+//constructor();
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+/*--------------------> OBJECT CREATE <--------------------*/
+/////////////////////////////////////////////////////////////
+
+function objectCreate() {
+
+    var personProto = {
+        calculateAge: function () {
+            console.log(2018 - this.yearOfBirth);
+        }
+    }
+    var john = Object.create(personProto);
+    john.name = "John";
+    john.yearOfBirth = 1990;
+    john.job = "Teacher";
+    console.log(john);
+
+    var jane = Object.create(personProto, {
+        name: {
+            value: "Jane"
+        },
+        yearOfBirth: {
+            value: 1968
+        },
+        job: {
+            value: "Designer"
+        },
+    });
+    console.log(jane);
+
+};
+//objectCreate();
 
 
 
