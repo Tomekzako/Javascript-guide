@@ -408,6 +408,104 @@ function returnFunction() {
     }
     interviewQuestion("teacher")("Adam");
 
+});
+//();
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+/*--------------------> BIND, CALL, APPlY <--------------------*/
+/////////////////////////////////////////////////////////////////
+
+(function () {
+
+    //CALL    
+
+    //Example 1
+    let john = {
+        name: 'John',
+        age: 26,
+        job: 'teacher',
+        presentation: function (style, timeOfDay) {
+            if (style === 'formal') {
+                console.log(`Good ${timeOfDay} Ladies and Gentelman! I'm ${this.name} and I'm a ${this.job}. I'm ${this.age} years old.`);
+            } else if (style === 'friendly') {
+                console.log(`Hey, what's up? I'm ${this.name}, I'm a ${this.job} and I'm ${this.age} years old. Have a nice ${timeOfDay}.`);
+            }
+        }
+    };
+
+    let maria = {
+        name: 'Maria',
+        age: 45,
+        job: 'designer'
+    };
+
+    john.presentation('friendly', 'morning');
+
+    john.presentation.call(maria, 'formal', 'afternoon');
+
+
+    //Example 2
+    function greet() {
+        var reply = [this.animal, 'typically sleep between', this.sleepDuration].join(' ');
+        console.log(reply);
+    }
+
+    var obj = {
+        animal: 'cats',
+        sleepDuration: '12 and 16 hours'
+    };
+
+    greet.call(obj); // cats typically sleep between 12 and 16 hours
+
+
+
+    //APPLY
+    //john.presentation.apply(maria, ['formal', 'afternoon']);
+
+
+    //BIND
+    const johnFormal = john.presentation.bind(john, 'formal');
+
+    johnFormal('morning');
+    johnFormal('night');
+
+    const mariaFriendly = john.presentation.bind(maria, 'friendly');
+
+    mariaFriendly('morning');
+    mariaFriendly('night');
+
+
+    //Example 
+
+    var years = [1985, 2011, 1976, 2001, 1948];
+
+    function arrayCalc(array, fn) {
+        var arrRes = [];
+        for (var i = 0; i < array.length; i++) {
+            arrRes.push(fn(array[i]));
+        }
+        return arrRes;
+    }
+
+    function calculateAge(el) {
+        return new Date().getFullYear() - el;
+    }
+
+    function isFullAge(limit, el) {
+        return el >= limit;
+    }
+    
+    const ages = arrayCalc(years, calculateAge);   
+    const fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+    
+    console.log(ages);
+    console.log(fullJapan);
+
 })();
 
 
