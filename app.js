@@ -261,6 +261,42 @@ function objectCreate() {
 
 
 
+///////////////////////////////////////////////////////////////////////////
+/*--------------------> PASSING FUNCTION AS ARGUMENT<--------------------*/
+///////////////////////////////////////////////////////////////////////////
+
+function passingFunction() {
+
+    var years = [1985, 2011, 1976, 2001, 1948];
+
+    function arrayCalc(array, fn) {
+        var arrRes = [];
+        for (var i = 0; i < array.length; i++) {
+            arrRes.push(fn(array[i]));
+        }
+        return arrRes;
+    }
+
+    function calculateAge(el) {
+        return new Date().getFullYear() - el;
+    }
+
+    function isFullAge(el) {
+        return el >= 18;
+    }
+
+    var ages = arrayCalc(years, calculateAge);
+    console.log(ages);
+
+    var fullAge = arrayCalc(ages, isFullAge);
+    console.log(fullAge);
+
+};
+//passingFunction();
+
+
+
+
 
 
 
