@@ -328,7 +328,40 @@ function returnFunction() {
 
 
 };
-returnFunction();
+//returnFunction();
+
+
+
+
+
+
+///////////////////////////////////////////////////
+/*--------------------> IIFE<--------------------*/
+///////////////////////////////////////////////////
+
+(function iife() {
+
+    function game() {
+        var score = Math.random() * 10;
+        console.log(score >= 5);
+    }
+    game();
+
+    (function game() {
+        var score = Math.random() * 10;
+        console.log(score >= 5);
+    })();
+
+
+    (function game(goodLuck) {
+        var score = Math.random() * 10;
+        console.log(score >= 5 - goodLuck);
+    })(4);
+
+    //Możemy wywołać IIFE tylko raz.
+
+})
+//();
 
 
 
