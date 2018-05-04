@@ -499,12 +499,52 @@ function returnFunction() {
     function isFullAge(limit, el) {
         return el >= limit;
     }
-    
-    const ages = arrayCalc(years, calculateAge);   
+
+    const ages = arrayCalc(years, calculateAge);
     const fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
-    
+
     console.log(ages);
     console.log(fullJapan);
+
+});
+//();
+
+
+
+
+
+///////////////////////////////////////////////////////
+/*--------------------> PRACTICE<--------------------*/
+///////////////////////////////////////////////////////
+
+(function practice() {
+
+    const Question = function (question, answer, correct) {
+        this.question = question;
+        this.answer = answer;
+        this.correct = correct;
+    }
+
+    Question.prototype.displayQuestion = function () {
+        console.log(this.question);
+
+        //        for (i = 0; i < this.answer.length; i++) {
+        //            console.log(i + ': ' + this.answer[i]);
+        //        }
+
+        for (const [index, cur] of this.answer.entries()) {
+            console.log(`${index} : ${cur}`);
+        }
+    }
+
+
+    const q1 = new Question('Is Javascript the coolest programming language in the world?', ['Yes', 'No'], 0);
+    const q2 = new Question('What is the name of this course\'s teacher?', ['John', 'Michael', 'Jonas'], 2);
+    const q3 = new Question('What does best describe coding?', ['Boring', 'Hard', 'Fun', 'Tediuos'], 2);
+
+    const questions = [q1, q2, q3];
+
+    q1.displayQuestion();
 
 })();
 
