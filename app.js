@@ -544,7 +544,9 @@ function returnFunction() {
 
     const questions = [q1, q2, q3];
 
-    q1.displayQuestion();
+    const randomQuestion = Math.floor(Math.random() * questions.length);
+
+    questions[randomQuestion].displayQuestion();
 
 })();
 
