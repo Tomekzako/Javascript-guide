@@ -537,6 +537,10 @@ function returnFunction() {
         }
     }
 
+    Question.prototype.checkAnswer = function (ans) {
+        ans == this.correct ? console.log("Correct answer!") : console.log("Wrong answer. Try again :)");
+    }
+
 
     const q1 = new Question('Is Javascript the coolest programming language in the world?', ['Yes', 'No'], 0);
     const q2 = new Question('What is the name of this course\'s teacher?', ['John', 'Michael', 'Jonas'], 2);
@@ -547,6 +551,11 @@ function returnFunction() {
     const randomQuestion = Math.floor(Math.random() * questions.length);
 
     questions[randomQuestion].displayQuestion();
+
+
+    const answer = parseInt(prompt('Please select the correct answer.'));
+
+    questions[randomQuestion].checkAnswer(answer);
 
 })();
 
