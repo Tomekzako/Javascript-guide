@@ -548,14 +548,21 @@ function returnFunction() {
 
     const questions = [q1, q2, q3];
 
-    const randomQuestion = Math.floor(Math.random() * questions.length);
+    function nextQuestion() {
 
-    questions[randomQuestion].displayQuestion();
+        const randomQuestion = Math.floor(Math.random() * questions.length);
 
+        questions[randomQuestion].displayQuestion();
 
-    const answer = parseInt(prompt('Please select the correct answer.'));
+        const answer = prompt('Please select the correct answer.');
 
-    questions[randomQuestion].checkAnswer(answer);
+        if (answer !== 'exit') {
+            questions[randomQuestion].checkAnswer(parseInt(answer));
+            nextQuestion();
+        }
+    }
+
+        nextQuestion();
 
 })();
 
