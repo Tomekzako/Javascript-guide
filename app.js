@@ -18,7 +18,29 @@ function basics() {
     // --> Falsy, becasue height is undefined.
 
 
+    //PRACTICE
 
+    const mikeTeam = [89, 120, 103];
+    const johnTeam = [116, 94, 123];
+    const maryTeam = [97, 134, 105];
+
+    const mikeTeamAvg = mikeTeam.reduce((a,b) => a + b);
+    const johnTeamAvg = johnTeam.reduce((a,b) => a + b);
+    const maryTeamAvg = maryTeam.reduce((a,b) => a + b);
+
+    const mikeAvg = mikeTeamAvg / mikeTeam.length;
+    const johnAvg = johnTeamAvg / johnTeam.length;
+    const maryAvg = maryTeamAvg / maryTeam.length;
+
+    if (mikeAvg > johnAvg && mikeAvg > maryAvg) {
+        console.log("Mike's team has the highest average");
+    } else if (mikeAvg === johnAvg && mikeAvg === maryAvg) {
+        console.log("John's team has the same average as Mike's and Mary's team");
+    } else if (maryAvg > johnAvg && maryAvg > mikeAvg) {
+        console.log("Mary's team has the highest average");
+    } else {
+        console.log("John's team has higher average");
+    }
 
 
     const years = [1990, 2007, 1943, 1985, 1921];
