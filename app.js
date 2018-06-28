@@ -4,6 +4,23 @@
 
 function basics() {
 
+    //FALSY --> undefined, null, 0, '', NaN
+    //TRUTHY --> NOT falsy values
+
+    let height;
+
+    if (height) {
+        console.log('Variable is defined');
+    } else {
+        console.log('Variable has NOT been defined');
+    }
+
+    // --> Falsy, becasue height is undefined.
+
+
+
+
+
     const years = [1990, 2007, 1943, 1985, 1921];
 
     //ES5
@@ -79,7 +96,7 @@ function basics() {
     console.log(full_2);
 
 };
-//basics();
+basics();
 
 
 
@@ -590,7 +607,8 @@ function returnFunction() {
 
     nextQuestion();
 
-})();
+});
+//();
 
 
 
