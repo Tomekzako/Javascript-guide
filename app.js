@@ -24,9 +24,9 @@ function basics() {
     const johnTeam = [116, 94, 123];
     const maryTeam = [97, 134, 105];
 
-    const mikeTeamAvg = mikeTeam.reduce((a,b) => a + b);
-    const johnTeamAvg = johnTeam.reduce((a,b) => a + b);
-    const maryTeamAvg = maryTeam.reduce((a,b) => a + b);
+    const mikeTeamAvg = mikeTeam.reduce((a, b) => a + b);
+    const johnTeamAvg = johnTeam.reduce((a, b) => a + b);
+    const maryTeamAvg = maryTeam.reduce((a, b) => a + b);
 
     const mikeAvg = mikeTeamAvg / mikeTeam.length;
     const johnAvg = johnTeamAvg / johnTeam.length;
@@ -42,6 +42,29 @@ function basics() {
         console.log("John's team has higher average");
     }
 
+
+    //PRACTICE
+
+    const bills = [124, 48, 268];
+
+    function addTip(bill) {
+        let tip;
+        if (bill < 50) {
+            tip = 0.20;
+        } else if (bill > 50 && bill < 200) {
+            tip = 0.15;
+        } else {
+            tip = 0.10;
+        }
+        return tip * bill;
+    };
+
+    //  addTip(bills[0]);
+    //  addTip(bills[1]);
+    //  addTip(bills[2]);
+
+    const tipArray = bills.map(el => addTip(el));
+    console.log(tipArray);
 
     const years = [1990, 2007, 1943, 1985, 1921];
 
