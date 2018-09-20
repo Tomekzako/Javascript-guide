@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////
 
 function basics() {
+    
 
     //FALSY --> undefined, null, 0, '', NaN
     //TRUTHY --> NOT falsy values
@@ -158,7 +159,7 @@ function hoisting() {
         console.log(2018 - y);
     }
 
-    //    retirement(1993); //--> błąd, ponieważ jest to wyrażenie funkcyjne
+    //    retirement(1993); //--> błąd, ponieważ jest to wyrażenie funkcyjne, a hoisting działa tylko dla deklaracji funkcji
 
     var retirement = function (y) {
         console.log(65 - (2018 - y));
@@ -230,6 +231,9 @@ function scoping() {
 ////////////////////////////////////////////////////
 
 function thisKeyword() {
+    
+// Zwykła deklaracja funckji - This kieruje do Window object
+// Metoda - This kieruje do obiektu który wywołuje metode
 
     var john = {
         name: 'John',
@@ -281,7 +285,7 @@ function constructor() {
     console.log(maria.lastName);
 
 };
-//constructor();
+// constructor();
 
 
 
@@ -354,7 +358,9 @@ function passingFunction() {
     console.log(fullAge);
 
 };
-//passingFunction();
+
+
+// passingFunction();
 
 
 
@@ -390,7 +396,7 @@ function returnFunction() {
 
 
 };
-//returnFunction();
+// returnFunction();
 
 
 
@@ -503,7 +509,7 @@ function returnFunction() {
     let maria = {
         name: 'Maria',
         age: 45,
-        job: 'designer'
+        job: 'des1igner'
     };
 
     john.presentation('friendly', 'morning');
@@ -653,7 +659,7 @@ function returnFunction() {
     nextQuestion();
 
 });
-//();
+// ();
 
 
 
@@ -690,7 +696,8 @@ function asynchronous() {
     /* ---> ASYNCHRONOUS JAVASCRIPT:
         Pozwala wykonywać wiele czynności jednocześnie, w tym samym czasie. 
 
-        'Filozofia Asynchronous JS polega na tym, że nie czekamy aż funkcja skończy pracę i dopiero po tym robimy coś z rezultatem. Zamiast tego pozwalamy funkcji wykonywać jakąś pracę w "tle".'
+        'Filozofia Asynchronous JS polega na tym, że nie czekamy aż funkcja skończy pracę i dopiero po tym robimy coś z rezultatem. 
+        Zamiast tego pozwalamy funkcji wykonywać jakąś pracę w "tle".'
         
         Przykładem może być ładowanie się obrazu. W trakcie pobierania, wyświetlamy informację że obrazek jest pobierany.
         
@@ -713,7 +720,7 @@ function asynchronous() {
         console.log('The End!');
     };
 
-    first();
+    // first();
 
     function getRecipe() {
 
@@ -740,10 +747,10 @@ function asynchronous() {
         }, 1500);
 
     };
-    //getRecipe();
+    getRecipe();
 
 };
-//asynchronous();
+// asynchronous();
 
 
 
@@ -859,7 +866,7 @@ function asyncAwait() {
 
 
 
-    async function getRecipeAW() { // --> 'async' oznacza, że funckja działa w 'tle' nie wstrzymując kodu. 
+    async function getRecipeAW() { // --> 'async' oznacza, że funkcja działa w 'tle' nie wstrzymując kodu. 
         const IDs = await getIDs; // --> 'await' czeka, aż Promise  osiągnie i zwróci wynik. 
         console.log(IDs);
         const recipe = await getRecipe(IDs[2]);
@@ -902,7 +909,7 @@ function asyncAwait() {
 function ajax() {
 
     function getWeather(woeid) {
-        fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)
+        fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`) 
             .then(result => {
                 console.log(result);
                 return result.json();
@@ -943,3 +950,26 @@ function ajax() {
 
 };
 //ajax();
+
+
+//////////////////////////////////////////////////////
+/*--------------------> MODULES<--------------------*/
+//////////////////////////////////////////////////////
+
+var modules = (function() {
+
+    var x = 15;
+
+    function add(a){
+        return x + a;
+    }
+
+    return {
+        publicTest: function(b) {
+            console.log(add(b));
+        }
+    }
+
+})();
+
+modules.publicTest(5);
