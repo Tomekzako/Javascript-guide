@@ -956,7 +956,7 @@ function ajax() {
 /*--------------------> MODULES<--------------------*/
 //////////////////////////////////////////////////////
 
-var modules = (function() {
+var moduleOne = (function() {
 
     var x = 15;
 
@@ -966,10 +966,22 @@ var modules = (function() {
 
     return {
         publicTest: function(b) {
-            console.log(add(b));
+            return add(b);
         }
     }
 
 })();
 
-modules.publicTest(5);
+var moduleTwo = (function(modOne) {
+
+    var z = modOne.publicTest(6);
+
+    return {
+        anotherPublic: function() {
+            console.log(z);
+        }
+    }
+
+})(moduleOne);
+
+moduleTwo.anotherPublic();
